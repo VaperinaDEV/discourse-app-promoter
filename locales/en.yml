@@ -1,0 +1,13 @@
+en:
+  app_modal:
+    title: "See Discourse in..."
+    installed_title: "Discourse app already installed..."
+  labels:
+    app_name: "Discourse App"
+    opera: "Opera"
+    firefox: "Firefox"
+    chrome: "Chrome"
+  actions:
+    open_app: "Open"
+    install_pwa: "Install"
+    continue_browser: "Continue"

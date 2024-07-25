@@ -1,0 +1,10 @@
+{
+  "name": "App Promoter",
+  "component": true,
+  "authors": null,
+  "assets": {
+    "opera-logo": "assets/opera.svg",
+    "firefox-logo": "assets/firefox.svg",
+    "chrome-logo": "assets/chrome.svg"
+  }
+}

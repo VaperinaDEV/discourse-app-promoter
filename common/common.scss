@@ -1,0 +1,50 @@
+.app-modal {
+  .d-modal__container {
+    &:before {
+      display: none;
+    }
+    .d-modal__header {
+      border-bottom: none;
+      justify-content: center;
+    }
+    .d-modal__body {
+      .mobile-view & {
+        @media (max-width: 350px) {
+          padding: 1rem 0.5rem;
+        }
+      }
+    }
+  }
+  .app-modal-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    &__app,
+    &__browser {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      .modal-logo {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5em;
+        img {
+          max-width: 36px;
+          height: auto;
+        }
+        .logo-label {
+          font-size: var(--font-0);
+          font-weight: 600;
+        }
+      }
+      .app-button,
+      .continue-button {
+        .btn {
+          min-width: 7em;
+        }
+      }
+    }
+  }
+}

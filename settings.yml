@@ -1,0 +1,30 @@
+app_type:
+  default: pwa
+  type: enum
+  choices:
+    - app
+  description: "Choose the app type you want to promote. Select pwa if you want to promote the site PWA version and select app if you have a published one in any store e.g. (Google Play) and you want to redirect users to the store app page."
+app_store_link:
+  type: string
+  default: "https://play.google.com/store/apps/details?id=com.discourse"
+  description: "Store link of your app. This only activates if you choose 'app' app_type."
+app_logo_img:
+  type: upload
+  default: "https://d11a6trkgmumsb.cloudfront.net/original/3X/9/a/9af9456df3a40537038643d987ffcbd553ad3296.svg"
+  description: "Upload an image logo of your app."
+app_cookie_lifespan:
+  type: enum
+  default: month
+  choices:
+    - none
+    - minute
+    - day
+    - week
+    - month
+  description:
+    en: ""
+app_cookie_name:
+  type: string
+  default: "appModalClosed"
+  description:
+    en: ""
