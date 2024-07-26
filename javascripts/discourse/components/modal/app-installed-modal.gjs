@@ -8,7 +8,6 @@ import DModal from "discourse/components/d-modal";
 import I18n from "discourse-i18n";
 
 export default class AppModal extends Component {  
-  @service capabilities;
   @service modal;
 
   @tracked appCookieClosed = cookie("app_modal_closed");
@@ -21,32 +20,12 @@ export default class AppModal extends Component {
     }
   }
 
-  get isOpera() {
-    return this.capabilities.isOpera;
-  }
-
-  get isFirefox() {
-    return this.capabilities.isFirefox;
-  }
-
-  get isChrome() {
-    return this.capabilities.isChrome;
-  }
-
   get appInstalledModalTitle() {
     return I18n.t(themePrefix("app_modal.installed_title"));
   }
 
   get appLabel() {
     return I18n.t(themePrefix("labels.app_name"));
-  }
-
-  get isOperaLabel() {
-    return I18n.t(themePrefix("labels.opera"));
-  }
-
-  get isFirefoxLabel() {
-    return I18n.t(themePrefix("labels.firefox"));
   }
 
   get isChromeLabel() {
@@ -109,16 +88,8 @@ export default class AppModal extends Component {
                 
           <div class="app-modal-wrapper__browser">
             <div class="modal-logo">
-              {{#if this.isOpera}}
-                <img src="{{settings.theme_uploads.opera-logo}}"/>
-                <span class="logo-label">{{this.isOperaLabel}}</span>
-              {{else if this.isFirefox}}
-                <img src="{{settings.theme_uploads.firefox-logo}}"/>
-                <span class="logo-label">{{this.isFirefoxLabel}}</span>
-              {{else if this.isChrome}}
-                <img src="{{settings.theme_uploads.chrome-logo}}"/>
-                <span class="logo-label">{{this.isChromeLabel}}</span>
-              {{/if}}
+              <img src="{{settings.theme_uploads.chrome-logo}}"/>
+              <span class="logo-label">{{this.isChromeLabel}}</span>
             </div>
     
             <div class="continue-button">
