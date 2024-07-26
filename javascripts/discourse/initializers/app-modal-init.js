@@ -16,10 +16,10 @@ export default {
       const capabilities = api.container.lookup("service:capabilities");
       
       const isNoAppNoCookie = !capabilities.isPwa && !capabilities.wasLaunchedFromDiscourseHub && !cookieAppModal;
-      const isAndroidPwa = settings.app_type === "pwa" && capabilities.isAndroid;
-      const isAndroidApp = settings.app_type === "app" && capabilities.isAndroid;
-      const isIOSApp = settings.app_type === "app" && capabilities.isIOS;
-      const isIpadOSApp = settings.app_type === "app" && capabilities.isIpadOS;
+      const isAndroidPwa = settings.android_app_type === "pwa" && capabilities.isAndroid;
+      const isAndroidApp = settings.android_app_type === "app" && capabilities.isAndroid;
+      const isIOSApp = settings.ios_app && capabilities.isIOS;
+      const isIpadOSApp = settings.ios_app && capabilities.isIpadOS;
       
       api.onPageChange((url, title) => {
         if (isNoAppNoCookie) {
