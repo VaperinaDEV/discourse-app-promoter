@@ -23,7 +23,10 @@ export default {
       
       api.onPageChange((url, title) => {
         if (isNoAppNoCookie) {
-          if ((isAndroidPwa) && !capabilities.isFirefox) {
+          if (
+            (isAndroidPwa) &&
+            !capabilities.isFirefox
+          ) {
             const installPrompt = () => {
               return new Promise((resolve, reject) => {
                 window.addEventListener("beforeinstallprompt", (event) => {
