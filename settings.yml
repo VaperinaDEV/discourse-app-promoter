@@ -7,7 +7,7 @@ android_app_type:
 android_appstore_link:
   type: string
   default: "https://play.google.com/store/apps/details?id=com.discourse"
-  description: "Store link of your android app. This only activates if you choose 'app' app_type."
+  description: "Store link of your android app. This only activates if you choose 'app' app_type. Default is goes to DiscourseHub App."
 ios_app:
   type: bool
   default: false
@@ -15,7 +15,7 @@ ios_app:
 apple_appstore_link:
   type: string
   default: "https://apps.apple.com/us/app/discourse-hub/id1173672076"
-  description: "Store link of your iOS app. This only activates if you enabled the ios_app setting."
+  description: "Store link of your iOS app. This only activates if you enabled the ios_app setting. Default is goes to DiscourseHub App."
 app_logo_img:
   type: upload
   default: ""
