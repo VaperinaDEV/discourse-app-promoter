@@ -1,13 +1,21 @@
-app_type:
+android_app_type:
   default: pwa
   type: enum
   choices:
     - app
   description: "Choose the app type you want to promote. Select pwa if you want to promote the site PWA version and select app if you have a published one in any store e.g. (Google Play) and you want to redirect users to the store app page."
-app_store_link:
+android_appstore_link:
   type: string
   default: "https://play.google.com/store/apps/details?id=com.discourse"
-  description: "Store link of your app. This only activates if you choose 'app' app_type."
+  description: "Store link of your android app. This only activates if you choose 'app' app_type."
+ios_app:
+  type: bool
+  default: false
+  description: "Select it if you want to promote your iOS app if you have a published one in (App Store) and you want to redirect users to the store app page."
+apple_appstore_link:
+  type: string
+  default: "https://apps.apple.com/us/app/discourse-hub/id1173672076"
+  description: "Store link of your iOS app. This only activates if you enabled the ios_app setting."
 app_logo_img:
   type: upload
   default: "https://d11a6trkgmumsb.cloudfront.net/original/3X/9/a/9af9456df3a40537038643d987ffcbd553ad3296.svg"
