@@ -22,6 +22,14 @@ export default class AppModal extends Component {
     }
   }
 
+  get isApple() {
+    return this.capabilities.isApple;
+  }
+
+  get isAndroid() {
+    return this.capabilities.isAndroid;
+  }
+
   get isOpera() {
     return this.capabilities.isOpera;
   }
@@ -89,8 +97,13 @@ export default class AppModal extends Component {
   }
 
   @action
-  openApp() {
-    window.location.href = settings.app_store_link;
+  openAndroidApp() {
+    window.location.href = settings.android_appstore_link;
+  }
+
+  @action
+  openAppleApp() {
+    window.location.href = settings.apple_appstore_link;
   }
 
   @action
@@ -133,11 +146,19 @@ export default class AppModal extends Component {
                   @action={{this.installPwa}}
                 />
               {{else if (eq settings.app_type "app")}}
-                <DButton
-                  @class="btn-primary"
-                  @translatedLabel={{this.openAppLabel}}
-                  @action={{this.openApp}}
-                />
+                {{#if this.isAndroid}}
+                  <DButton
+                    @class="btn-primary"
+                    @translatedLabel={{this.openAppLabel}}
+                    @action={{this.openAndroidApp}}
+                  />
+                {{else if this.isApple}}
+                  <DButton
+                    @class="btn-primary"
+                    @translatedLabel={{this.openAppLabel}}
+                    @action={{this.openAppleApp}}
+                  />
+                {{/if}}
               {{/if}}
             </div>
           </div>
