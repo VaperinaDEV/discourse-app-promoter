@@ -139,20 +139,22 @@ export default class AppModal extends Component {
             </div>
     
             <div class="app-button">
-              {{#if (eq settings.app_type "pwa")}}
-                <DButton
-                  @class="btn-primary"
-                  @translatedLabel={{this.installPwaLabel}}
-                  @action={{this.installPwa}}
-                />
-              {{else if (eq settings.app_type "app")}}
-                {{#if this.isAndroid}}
+              {{#if this.isAndroid}}
+                {{#if (eq settings.android_app_type "pwa")}}
+                  <DButton
+                    @class="btn-primary"
+                    @translatedLabel={{this.installPwaLabel}}
+                    @action={{this.installPwa}}
+                  />
+                {{else if (eq settings.android_app_type "app")}}
                   <DButton
                     @class="btn-primary"
                     @translatedLabel={{this.openAppLabel}}
                     @action={{this.openAndroidApp}}
                   />
-                {{else if this.isApple}}
+                {{/if}}
+              {{else if this.isApple}}
+                {{#if settings.ios_app}}
                   <DButton
                     @class="btn-primary"
                     @translatedLabel={{this.openAppLabel}}
