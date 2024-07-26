@@ -34,6 +34,10 @@ export default class AppModal extends Component {
     return this.capabilities.isChrome;
   }
 
+  get isSafari() {
+    return this.capabilities.isSafari;
+  }
+
   get appModalTitle() {
     return I18n.t(themePrefix("app_modal.title"));
   }
@@ -52,6 +56,10 @@ export default class AppModal extends Component {
 
   get isChromeLabel() {
     return I18n.t(themePrefix("labels.chrome"));
+  }
+
+  get isSafariLabel() {
+    return I18n.t(themePrefix("labels.safari"));
   }
 
   get installPwaLabel() {
@@ -145,6 +153,9 @@ export default class AppModal extends Component {
               {{else if this.isChrome}}
                 <img src="{{settings.theme_uploads.chrome-logo}}"/>
                 <span class="logo-label">{{this.isChromeLabel}}</span>
+              {{else if this.isSafari}}
+                <img src="{{settings.theme_uploads.safari-logo}}"/>
+                <span class="logo-label">{{this.isSafariLabel}}</span>
               {{/if}}
             </div>
     
