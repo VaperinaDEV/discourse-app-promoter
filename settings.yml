@@ -1,16 +1,24 @@
-app_type:
+android_app_type:
   default: pwa
   type: enum
   choices:
     - app
-  description: "Choose the app type you want to promote. Select pwa if you want to promote the site PWA version and select app if you have a published one in any store e.g. (Google Play) and you want to redirect users to the store app page."
-app_store_link:
+  description: "Choose the app type you want to promote. Select pwa if you want to promote the site PWA version (works on Chrome) and select app if you have a published one in any store e.g. (Google Play) and you want to redirect users to the store app page."
+android_appstore_link:
   type: string
-  default: "https://play.google.com/store/apps/details?id=com.discourse"
-  description: "Store link of your app. This only activates if you choose 'app' app_type."
+  default: ""
+  description: "Store link of your android app. This only activates if you choose 'app' app_type. E.g. https://play.google.com/store/apps/details?id=com.discourse"
+ios_app:
+  type: bool
+  default: false
+  description: "Select it if you want to promote your iOS app if you have a published one in (App Store) and you want to redirect users to the store app page."
+apple_appstore_link:
+  type: string
+  default: ""
+  description: "Store link of your iOS app. This only activates if you enabled the ios_app setting. E.g. https://apps.apple.com/us/app/discourse-hub/id1173672076"
 app_logo_img:
   type: upload
-  default: "https://d11a6trkgmumsb.cloudfront.net/original/3X/9/a/9af9456df3a40537038643d987ffcbd553ad3296.svg"
+  default: ""
   description: "Upload an image logo of your app."
 app_cookie_lifespan:
   type: enum
@@ -21,10 +29,8 @@ app_cookie_lifespan:
     - day
     - week
     - month
-  description:
-    en: ""
+  description: "Choose the cookie expiration date. This cookie will be placed when user click the Continue button."
 app_cookie_name:
   type: string
   default: "appModalClosed"
-  description:
-    en: ""
+  description: ""

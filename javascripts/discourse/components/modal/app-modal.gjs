@@ -22,6 +22,14 @@ export default class AppModal extends Component {
     }
   }
 
+  get isApple() {
+    return this.capabilities.isApple;
+  }
+
+  get isAndroid() {
+    return this.capabilities.isAndroid;
+  }
+
   get isOpera() {
     return this.capabilities.isOpera;
   }
@@ -32,6 +40,10 @@ export default class AppModal extends Component {
 
   get isChrome() {
     return this.capabilities.isChrome;
+  }
+
+  get isSafari() {
+    return this.capabilities.isSafari;
   }
 
   get appModalTitle() {
@@ -52,6 +64,10 @@ export default class AppModal extends Component {
 
   get isChromeLabel() {
     return I18n.t(themePrefix("labels.chrome"));
+  }
+
+  get isSafariLabel() {
+    return I18n.t(themePrefix("labels.safari"));
   }
 
   get installPwaLabel() {
@@ -81,8 +97,13 @@ export default class AppModal extends Component {
   }
 
   @action
-  openApp() {
-    window.location.href = settings.app_store_link;
+  openAndroidApp() {
+    window.location.href = settings.android_appstore_link;
+  }
+
+  @action
+  openAppleApp() {
+    window.location.href = settings.apple_appstore_link;
   }
 
   @action
@@ -118,18 +139,28 @@ export default class AppModal extends Component {
             </div>
     
             <div class="app-button">
-              {{#if (eq settings.app_type "pwa")}}
-                <DButton
-                  @class="btn-primary"
-                  @translatedLabel={{this.installPwaLabel}}
-                  @action={{this.installPwa}}
-                />
-              {{else if (eq settings.app_type "app")}}
-                <DButton
-                  @class="btn-primary"
-                  @translatedLabel={{this.openAppLabel}}
-                  @action={{this.openApp}}
-                />
+              {{#if this.isAndroid}}
+                {{#if (eq settings.android_app_type "pwa")}}
+                  <DButton
+                    @class="btn-primary"
+                    @translatedLabel={{this.installPwaLabel}}
+                    @action={{this.installPwa}}
+                  />
+                {{else if (eq settings.android_app_type "app")}}
+                  <DButton
+                    @class="btn-primary"
+                    @translatedLabel={{this.openAppLabel}}
+                    @action={{this.openAndroidApp}}
+                  />
+                {{/if}}
+              {{else if this.isApple}}
+                {{#if settings.ios_app}}
+                  <DButton
+                    @class="btn-primary"
+                    @translatedLabel={{this.openAppLabel}}
+                    @action={{this.openAppleApp}}
+                  />
+                {{/if}}
               {{/if}}
             </div>
           </div>
@@ -145,6 +176,9 @@ export default class AppModal extends Component {
               {{else if this.isChrome}}
                 <img src="{{settings.theme_uploads.chrome-logo}}"/>
                 <span class="logo-label">{{this.isChromeLabel}}</span>
+              {{else if this.isSafari}}
+                <img src="{{settings.theme_uploads.safari-logo}}"/>
+                <span class="logo-label">{{this.isSafariLabel}}</span>
               {{/if}}
             </div>
     

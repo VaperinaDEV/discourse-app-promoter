@@ -5,6 +5,7 @@
   "assets": {
     "opera-logo": "assets/opera.svg",
     "firefox-logo": "assets/firefox.svg",
-    "chrome-logo": "assets/chrome.svg"
+    "chrome-logo": "assets/chrome.svg",
+    "safari-logo": "assets/safari.svg"
   }
 }

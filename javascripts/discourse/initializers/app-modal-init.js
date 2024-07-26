@@ -15,16 +15,17 @@ export default {
       const modal = api.container.lookup("service:modal");
       const capabilities = api.container.lookup("service:capabilities");
       
+      const isNoAppNoCookie = !capabilities.isPwa && !capabilities.wasLaunchedFromDiscourseHub && !cookieAppModal;
+      const isAndroidPwa = settings.android_app_type === "pwa" && capabilities.isAndroid;
+      const isAndroidApp = settings.android_app_type === "app" && capabilities.isAndroid;
+      const isIOSApp = settings.ios_app && capabilities.isIOS;
+      const isIpadOSApp = settings.ios_app && capabilities.isIpadOS;
+      
       api.onPageChange((url, title) => {
-        if (
-          !capabilities.isPwa &&
-          !capabilities.wasLaunchedFromDiscourseHub &&
-          capabilities.isAndroid &&
-          !cookieAppModal
-        ) {
+        if (isNoAppNoCookie) {
           if (
-            settings.app_type === "pwa" &&
-            !capabilities.isFirefox
+            (isAndroidPwa) &&
+            capabilities.isChrome
           ) {
             const installPrompt = () => {
               return new Promise((resolve, reject) => {
@@ -47,13 +48,17 @@ export default {
               .catch(() => {
                 modal.show(AppInstalledModal);
               });
-          } else if (settings.app_type === "app") {
+          } else if (
+            (isAndroidApp) ||
+            (isIOSApp) ||
+            (isIpadOSApp)
+          ) {
             modal.show(AppModal);
           }
         } else {
           return;
         }
-      });     
+      });
     });
   }
 };
