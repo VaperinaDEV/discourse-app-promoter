@@ -25,7 +25,7 @@ export default {
         if (isNoAppNoCookie) {
           if (
             (isAndroidPwa) &&
-            !capabilities.isFirefox
+            capabilities.isChrome
           ) {
             const installPrompt = () => {
               return new Promise((resolve, reject) => {
