@@ -23,7 +23,7 @@ export default {
       
       api.onPageChange((url, title) => {
         if (isNoAppNoCookie) {
-          if (isAndroidPwa && !capabilities.isFirefox) {
+          if ((isAndroidPwa) && !capabilities.isFirefox) {
             const installPrompt = () => {
               return new Promise((resolve, reject) => {
                 window.addEventListener("beforeinstallprompt", (event) => {
@@ -46,9 +46,9 @@ export default {
                 modal.show(AppInstalledModal);
               });
           } else if (
-            settings.app_type === "app" ||
-            isIOSApp ||
-            isIpadOSApp
+            (isAndroidApp) ||
+            (isIOSApp) ||
+            (isIpadOSApp)
           ) {
             modal.show(AppModal);
           }
