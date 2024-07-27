@@ -7,7 +7,7 @@ import DButton from "discourse/components/d-button";
 import DModal from "discourse/components/d-modal";
 import I18n from "discourse-i18n";
 
-export default class AppModal extends Component {  
+export default class AppInstalledModal extends Component {  
   @service modal;
 
   @tracked appCookieClosed = cookie("app_modal_closed");
